@@ -31,6 +31,9 @@ export class CatSearchComponent implements OnInit {
   }
 
   resetFilter() {
+    this.searchForm = this.fb.group({
+      breed: [''],
+    });
     this.store.dispatch(new SetBreed(''));
     this.loadCats();
   }

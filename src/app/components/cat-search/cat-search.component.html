@@ -1,13 +1,12 @@
 <div class="container">
-  <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+  <form [formGroup]="searchForm">
     <mat-form-field appearance="fill">
       <mat-label>Breed</mat-label>
-      <mat-select formControlName="breed">
+      <mat-select formControlName="breed" (selectionChange)="onSearch()">
         <mat-option *ngFor="let breed of breeds" [value]="breed.id">{{ breed.name }}</mat-option>
       </mat-select>
     </mat-form-field>
-    <button mat-raised-button color="primary" type="submit" style="margin-right: 10px">Search</button>
-    <button mat-raised-button type="button" (click)="resetFilter()">Reset Filter</button>
+    <button mat-raised-button color="primary" type="button" style="margin-right: 10px" (click)="resetFilter()">Reset Filter</button>
   </form>
   <div class="loading" *ngIf="loading">Loading...</div>
   <div class="error" *ngIf="errorMessage">{{ errorMessage }}</div>
